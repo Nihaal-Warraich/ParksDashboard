@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ParksDashboard/static/css/main.844d618b.css",
+    "main.js": "/ParksDashboard/static/js/main.08aa5360.js",
+    "static/js/453.7fa3289a.chunk.js": "/ParksDashboard/static/js/453.7fa3289a.chunk.js",
+    "index.html": "/ParksDashboard/index.html",
+    "main.844d618b.css.map": "/ParksDashboard/static/css/main.844d618b.css.map",
+    "main.08aa5360.js.map": "/ParksDashboard/static/js/main.08aa5360.js.map",
+    "453.7fa3289a.chunk.js.map": "/ParksDashboard/static/js/453.7fa3289a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.844d618b.css",
+    "static/js/main.08aa5360.js"
+  ]
+}
