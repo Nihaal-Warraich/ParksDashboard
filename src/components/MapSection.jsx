@@ -66,9 +66,8 @@ const MapCard = () => (
     <h3 className={styles.cardTitle}>Newark Ward Map</h3>
     <p className={styles.cardSub}>Parks &amp; Greenspaces by District</p>
     <div className={styles.mapImageWrapper}>
-      {/* Replace src with your actual ward map image */}
       <img
-        src="/images/map-of-Newark-wards.webp"
+        src={`${process.env.PUBLIC_URL}/images/map-of-Newark-wards.webp`}
         alt="Map of Newark NJ showing ward boundaries and park locations"
         className={styles.mapImage}
         onError={(e) => {
@@ -84,7 +83,6 @@ const MapCard = () => (
         </div>
       </div>
     </div>
-    
   </div>
 );
 

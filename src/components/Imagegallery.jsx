@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ImageGallery.module.css";
 
-/**
- * ImageGallery
- * Loads images dynamically from public/images/parkpictures/
- * Add images there as: park1.jpg, park2.jpg, etc.
- *
- * To use real dynamic imports, images should be referenced
- * in the imageList array below (update with actual filenames).
- */
 const imageList = [
-  { src: "/images/parkpictures/park1.jpeg" },
-  { src: "/images/parkpictures/park2.jpeg"},
-  { src: "/images/parkpictures/park3.jpeg" },
-  { src: "/images/parkpictures/park4.jpeg" },
-  { src: "/images/parkpictures/park5.jpeg" },
-  { src: "/images/parkpictures/park6.jpeg" },
-  { src: "/images/parkpictures/park7.jpeg" }
-
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park1.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park2.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park3.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park4.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park5.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park6.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/images/parkpictures/park7.jpeg` },
 ];
 
 const PLACEHOLDER_COLORS = ["#606c38", "#283618", "#dda15e", "#bc6c25", "#8a9a5b"];
@@ -33,7 +24,6 @@ const ImageGallery = () => {
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
 
-  // Auto-advance
   useEffect(() => {
     const t = setInterval(next, 5500);
     return () => clearInterval(t);
@@ -47,7 +37,7 @@ const ImageGallery = () => {
   return (
     <div className={styles.gallery}>
       <h3 className={styles.galleryTitle}>Pictures from Cherry Blossom Season at Branch Brook</h3>
-      <p className={styles.galleryCredit}>Photo Credits: My dear friend Nabiya Chaudhry because taking photos is not my strong suit. </p>
+      <p className={styles.galleryCredit}>Photo Credits: My dear friend Nabiya Chaudhry because taking photos is not my strong suit.</p>
       <div className={styles.imageFrame}>
         {!failed[current] ? (
           <img
@@ -60,7 +50,6 @@ const ImageGallery = () => {
           />
         ) : null}
 
-        {/* Placeholder shown when image not yet loaded or failed */}
         {(failed[current] || !loaded[current]) && (
           <div
             className={styles.placeholder}
@@ -68,22 +57,18 @@ const ImageGallery = () => {
           >
             <span>{PLACEHOLDER_EMOJIS[current % PLACEHOLDER_EMOJIS.length]}</span>
             <p>Add photo to</p>
-            <small><code>public/images/parkpictures/park{current + 1}.jpg</code></small>
+            <small><code>public/images/parkpictures/park{current + 1}.jpeg</code></small>
           </div>
         )}
 
-        {/* Prev/Next overlays */}
         <button className={`${styles.arrowBtn} ${styles.arrowLeft}`} onClick={prev} aria-label="Previous image">‹</button>
         <button className={`${styles.arrowBtn} ${styles.arrowRight}`} onClick={next} aria-label="Next image">›</button>
 
-        {/* Counter badge */}
         <div className={styles.counter}>{current + 1} / {total}</div>
       </div>
 
-      {/* Caption */}
       <p className={styles.caption}>{img.caption}</p>
 
-      {/* Dot indicators */}
       <div className={styles.dots}>
         {imageList.map((_, i) => (
           <button
@@ -95,7 +80,6 @@ const ImageGallery = () => {
         ))}
       </div>
 
-      {/* Thumbnail strip */}
       <div className={styles.thumbStrip}>
         {imageList.map((img, i) => (
           <button
