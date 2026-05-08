@@ -1,0 +1,155 @@
+.section {
+  padding: 64px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copperwood);
+  margin-bottom: 4px;
+}
+
+.title { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--black-forest); }
+
+.desc {
+  max-width: 380px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: right;
+}
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ── Fallback / error notices ─────────────────────────────────────────────── */
+
+.fallbackNotice {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--olive-leaf) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--olive-leaf) 20%, transparent);
+}
+
+.fallbackNotice code {
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  background: color-mix(in srgb, var(--black-forest) 8%, transparent);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.errorMsg {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 32px;
+  text-align: center;
+}
+
+/* ── Skeleton loading cards ──────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: var(--surface-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.skeletonImage {
+  aspect-ratio: 16/9;
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    color-mix(in srgb, var(--border) 50%, transparent) 50%,
+    var(--border) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.skeletonBody {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeletonLine {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    color-mix(in srgb, var(--border) 50%, transparent) 50%,
+    var(--border) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Stagger the shimmer so cards don't all pulse in sync */
+.skeleton:nth-child(2) .skeletonLine,
+.skeleton:nth-child(2) .skeletonImage { animation-delay: 0.15s; }
+.skeleton:nth-child(3) .skeletonLine,
+.skeleton:nth-child(3) .skeletonImage { animation-delay: 0.3s; }
+.skeleton:nth-child(4) .skeletonLine,
+.skeleton:nth-child(4) .skeletonImage { animation-delay: 0.45s; }
+.skeleton:nth-child(5) .skeletonLine,
+.skeleton:nth-child(5) .skeletonImage { animation-delay: 0.6s; }
+.skeleton:nth-child(6) .skeletonLine,
+.skeleton:nth-child(6) .skeletonImage { animation-delay: 0.75s; }
+
+.skeletonShort { width: 35%; }
+.skeletonMed   { width: 60%; }
+.skeletonFull  { width: 100%; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer { text-align: center; margin-top: 36px; }
+
+.moreBtn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 2px solid var(--olive-leaf);
+  color: var(--olive-leaf);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.moreBtn:hover { background: var(--olive-leaf); color: var(--cornsilk); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .desc { text-align: left; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}

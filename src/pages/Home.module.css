@@ -1,0 +1,22 @@
+.page {
+  min-height: 100vh;
+  background: var(--cornsilk);
+}
+
+.footer {
+  background: var(--black-forest);
+  color: rgba(254, 250, 224, 0.45);
+  text-align: center;
+  padding: 24px;
+  font-size: 0.8rem;
+}
+
+.footer a {
+  color: var(--sunlit-clay);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer a:hover {
+  color: var(--copperwood);
+}
